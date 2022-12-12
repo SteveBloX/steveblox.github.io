@@ -13,16 +13,18 @@
 <body>
 <h1 class="title text-6xl pb-20">MY<br>TECH<br>STACKK</h1>
 
-<div class="content home flex items-center justify-center" style="display: none">
-    <h1 class="text-5xl px-10">Hey, I'm SteveBloX. I love <a href="./techstack.html">programming</a> and <a
-            href="./techstack.html">designing</a>.</h1>
+<div class="content home flex items-center justify-center" style="display:none">
+    <!--HOME-->
+    <p class="text-5xl flex justify-center">Hey, I'm SteveBloX. I love programming and designing.</p>
+
 </div>
 
 <div class="content projects flex items-center justify-center" style="">
-    <h1 class="text-5xl px-10">Here are my projects:</h1>
+    <!--PROJECTS-->
 </div>
 
 <div class="content techstack flex" style="display: none">
+    <!--TECHSTACK-->
     <p class="badges flex-wrap flex justify-center"><a><img
             alt="Notion"
             data-canonical-src="https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&amp;logo=notion&amp;logoColor=white"
@@ -95,15 +97,15 @@
 </div>
 
 <div class="content social flex items-center justify-center" style="display: none">
-    <h1 class="text-5xl px-10">Here are my socials:</h1>
+    <!--SOCIAL-->
 </div>
 
 
-<footer style="mix-blend-mode: difference;position: fixed; bottom: 0; left: 50%; transform: translateX(-50%)">
-    <a class="text-2xl nhome">Home</a>
-    <a class="text-2xl act nprojects">Projects</a>
-    <a class="text-2xl nts">My tech stack</a>
-    <a class="text-2xl nsocial">Social</a>
+<footer>
+    <a class="text-2xl nhome" href="/index.html" rel="no-refresh">Home</a>
+    <a class="text-2xl act nprojects" href="/projects.html" rel="no-refresh">Projects</a>
+    <a class="text-2xl nts" href="techstack.html" rel="no-refresh">My tech stack</a>
+    <a class="text-2xl nsocial" href="social.html" rel="no-refresh">Social</a>
 </footer>
 </body>
 <style>
@@ -133,9 +135,18 @@
     }
 
     footer {
+        padding-top: 10px;
         justify-content: center;
         display: flex;
         font-family: notstretch, sans-serif;
+        color: white;
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        /*background: rgba(133, 133, 133, 0.90);*/
+        backdrop-filter: blur(25px);
+        border-radius: 20px 20px 0 0
     }
 
     footer a {
@@ -144,7 +155,7 @@
         border-bottom: 2px solid lightblue;
         cursor: pointer;
         transition: all 0.25s;
-        mix-blend-mode: difference;
+        z-index: 1
     }
 
     footer .act {
@@ -244,7 +255,7 @@
     updateTitle()
     homeNav.addEventListener("click", () => {
         dnc=true
-        window.history.replaceState({}, '','/');
+        //window.history.replaceState({}, '','/');
         $(".title").fadeOut()
         document.querySelectorAll(".home *").forEach(e => {
             e.style.display = "";
@@ -277,7 +288,7 @@
     })
     projectsNav.addEventListener("click", () => {
         dnc=true
-        window.history.replaceState({}, '','/projects');
+        //window.history.replaceState({}, '','/projects');
         $(".title").fadeOut()
         document.querySelectorAll(".projects *").forEach(e => {
             e.style.display = "";
@@ -311,7 +322,7 @@
     let els = ""
     techStackNav.addEventListener("click", () => {
         dnc=true
-        window.history.replaceState({}, '','/techStack');
+        //window.history.replaceState({}, '','/techStack');
         $(".title").fadeOut()
         document.querySelectorAll(".techstack img").forEach(e => {
             e.style.display = "";
@@ -346,7 +357,7 @@
         act = "ts"
     })
     socialNav.addEventListener("click", () => {
-        window.history.replaceState({}, '','/social');
+        //window.history.replaceState({}, '','/social');
         $(".title").fadeOut()
         document.querySelectorAll(".social *").forEach(e => {
             e.style.display = "";
