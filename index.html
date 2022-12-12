@@ -159,7 +159,6 @@
         transition: all 0.5s;
     }
 
-    /*animated underline when hovering*/
     .social a::after {
         content: "";
         position: absolute;
@@ -192,7 +191,6 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        /*background: rgba(133, 133, 133, 0.90);*/
         backdrop-filter: blur(25px);
         border-radius: 20px 20px 0 0
     }
@@ -257,29 +255,6 @@
         height: 80%;
         overflow-y: auto;
     }
-/*
-    *::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        background-color: #F5F5F5;
-    }
-
-    *::-webkit-scrollbar {
-        width: 10px;
-        background-color: #F5F5F5;
-    }
-
-    *::-webkit-scrollbar-thumb {
-        background-color: #F90;
-        background-image: -webkit-linear-gradient(45deg,
-        rgba(255, 255, 255, .2) 25%,
-        transparent 25%,
-        transparent 50%,
-        rgba(255, 255, 255, .2) 50%,
-        rgba(255, 255, 255, .2) 75%,
-        transparent 75%,
-        transparent)
-    }
-*/
     *::-webkit-scrollbar {
         display: none;
     }
@@ -320,58 +295,6 @@
 
         return newArray
     }
-
-    /*
-        function badgesAnim(){
-            let els = ""
-            document.querySelectorAll(".techstack img").forEach(e => {
-                e.style.display = "";
-                e.style.opacity = "0"
-                e.style.transform = "translateY(" + 50 + "px)"
-            })
-            els = document.querySelectorAll(".techstack img")
-            els = shuffle(els)
-            for (let i = 0; i < els.length; i++) {
-                eval(`
-                    setTimeout(() => {
-                        let el = els[0]
-                        el.style.transition += " opacity 0.5s, transform 0.5s"
-                        el.style.transform = "translateY(0px)"
-                        el.style.opacity = "1"
-                        els.shift()
-                    }, ` + i + `*
-                tsd
-                )
-                `)
-            }
-            for (let i = 0; i < els.length; i++) {
-                eval(`
-                    setTimeout(() => {
-                        let el = els[0]
-                        el.style.transition += " opacity 0.5s, transform 0.5s"
-                        el.style.transform = "translateY(50px)"
-                        el.style.opacity = "0"
-                        els.shift()
-                    }, ` + i + `*
-                tsd
-                )
-                `)
-            }
-            /*
-            setTimeout(()=>{
-                //shuffle badges and apply
-                let badges = document.querySelectorAll(".techstack a")
-                badges = shuffle(badges)
-                let badgesContainer = document.querySelector(".badges")
-                badgesContainer.innerHTML = ""
-                badges.forEach(badge => {
-                    badgesContainer.appendChild(badge)
-                })
-
-            }, 200)*//*
-        setTimeout(badgesAnim, 2000)
-    }
-    badgesAnim()*/
 
     function updateTitle() {
         if (dnc) {
