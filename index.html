@@ -15,12 +15,17 @@
 
 <div class="content home flex items-center justify-center" style="">
     <!--HOME-->
-    <p class="text-5xl" style="position:absolute;left:50%;transform:translateX(-50%);">Hey, I'm SteveBloX. I love programming and designing.</p>
+    <p class="text-5xl text-center" style="">Hey, I'm SteveBloX. I love programming and designing.</p>
 
 </div>
 
-<div class="content projects flex items-center justify-center" style="display: none">
+<div class="content projects flex justify-center" style="display: none">
     <!--PROJECTS-->
+    <div class="card flex" style="display: grid; grid-template-columns: 1fr;grid-template-rows: 1fr 1fr 1fr;gap: 30px 30px;grid-template-areas:'.' '.' '.'; ">
+        <p class="ml-2.5 text-2xl">Pastastudio</p>
+        <p class="ml-2.5 text-xl">Pastastudio is an app development studio that I created with a friend.</p>
+        <a href="https://pasta.studio" target="_blank" class="text-2xl text-amber-600">Website</a>
+    </div>
 </div>
 
 <div class="content techstack flex" style="display: none">
@@ -132,7 +137,7 @@
         font-size: 100px;
         text-align: center;
         margin-top: 50px;
-        transition: all 0.4s;
+
     }
 
     footer {
@@ -177,10 +182,6 @@
         transition: opacity 0.5s, transform 0.5s;
     }
 
-    .projects * {
-        transition: opacity 0.5s, transform 0.5s;
-    }
-
 
     .social * {
         transition: opacity 0.5s, transform 0.5s;
@@ -198,6 +199,27 @@
         height: 6em;
         transform: scale(0.80)
     }
+
+
+    .card {
+        box-sizing: border-box;
+        width: auto;
+        height: 254px;
+        background: rgba(217, 217, 217, 0.58);
+        border: 1px solid white;
+        box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+        backdrop-filter: blur(6px);
+        border-radius: 17px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.5s;
+    }
+
+    .card:hover {
+        border: 1px solid black;
+        transform: scale(1.05);
+    }
+
 </style>
 <script>
     const homeContent = document.querySelector(".home")
@@ -263,7 +285,7 @@
             e.style.opacity = "0"
             e.style.transform = "translateY(" + 50 + "px)"
         })
-        homeContent.style.display = "flex"
+        homeContent.style.display = ""
         for (let i = 0; i < document.querySelectorAll(".home *").length; i++) {
             eval(`
                 setTimeout(() => {
@@ -291,17 +313,16 @@
         dnc=true
         //window.history.replaceState({}, '','/projects');
         $(".title").fadeOut()
-        document.querySelectorAll(".projects *").forEach(e => {
+        document.querySelectorAll(".projects .card").forEach(e => {
             e.style.display = "";
             e.style.opacity = "0"
             e.style.transform = "translateY(" + 50 + "px)"
         })
         projectsContent.style.display = "flex"
-        for (let i = 0; i < document.querySelectorAll(".projects *").length; i++) {
+        for (let i = 0; i < document.querySelectorAll(".projects .card").length; i++) {
             eval(`
                 setTimeout(() => {
-                    var els = document.querySelectorAll(".projects *")
-                    els[${i}].style.transition += " opacity 0.5s, transform 0.5s"
+                    var els = document.querySelectorAll(".projects .card")
                     els[${i}].style.transform = "translateY(0px)"
                     els[${i}].style.opacity = "1"
                 }, ` + i + `*
