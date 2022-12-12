@@ -321,7 +321,6 @@
     updateTitle()
     homeNav.addEventListener("click", () => {
         dnc=true
-        //window.history.replaceState({}, '','/');
         $(".title").fadeOut()
         document.querySelectorAll(".home *").forEach(e => {
             e.style.display = "";
@@ -354,7 +353,6 @@
     })
     projectsNav.addEventListener("click", () => {
         dnc=true
-        //window.history.replaceState({}, '','/projects');
         $(".title").fadeOut()
         document.querySelectorAll(".projects .card").forEach(e => {
             e.style.display = "";
@@ -387,7 +385,6 @@
     let els = ""
     techStackNav.addEventListener("click", () => {
         dnc=true
-        //window.history.replaceState({}, '','/techStack');
         $(".title").fadeOut()
         document.querySelectorAll(".techstack img").forEach(e => {
             e.style.display = "";
@@ -422,7 +419,7 @@
         act = "ts"
     })
     socialNav.addEventListener("click", () => {
-        //window.history.replaceState({}, '','/social');
+
         $(".title").fadeOut()
         document.querySelectorAll(".social a").forEach(e => {
             e.style.display = "";
