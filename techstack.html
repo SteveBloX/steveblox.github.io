@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress JSJQueryEfficiency -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,19 +11,19 @@
     <title>SteveBloX</title>
 </head>
 <body>
-<h1 class="title text-6xl pb-20">STEVEE<br>BLLOX</h1>
+<h1 class="title text-6xl pb-20">MY<br>TECH<br>STACKK</h1>
 
-<div class="content home flex items-center justify-center" style="display: none">
-    <h1 class="text-5xl px-10">Hey, I'm SteveBloX. I love <a href="./codingstuff.html">programming</a> and <a
-            href="./codingstuff.html">designing</a>.</h1>
+<div class="content home flex items-center justify-center" style="">
+    <h1 class="text-5xl px-10">Hey, I'm SteveBloX. I love <a href="./techstack.html">programming</a> and <a
+            href="./techstack.html">designing</a>.</h1>
 </div>
 
 <div class="content projects flex items-center justify-center" style="display: none">
     <h1 class="text-5xl px-10">Here are my projects:</h1>
 </div>
 
-<div class="content codingstuff flex justify-center" style="">
-    <p class="badges"><a><img
+<div class="content techstack flex" style="display: none">
+    <p class="badges flex-wrap flex justify-center"><a><img
             alt="Notion"
             data-canonical-src="https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&amp;logo=notion&amp;logoColor=white"
             src="https://camo.githubusercontent.com/0f6325940d36137c3e77d69b0dfe0ffb33e9a1084faf9cc843a9c929a874c709/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f74696f6e2d2532333030303030302e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d6e6f74696f6e266c6f676f436f6c6f723d7768697465"
@@ -91,7 +92,6 @@
             data-canonical-src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&amp;logo=javascript&amp;logoColor=%23F7DF1E"
             src="https://camo.githubusercontent.com/aeddc848275a1ffce386dc81c04541654ca07b2c43bbb8ad251085c962672aea/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6a6176617363726970742d2532333332333333302e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d6a617661736372697074266c6f676f436f6c6f723d253233463744463145"
             style="max-width: 100%;"></a></p>
-
 </div>
 
 <div class="content social flex items-center justify-center" style="display: none">
@@ -99,10 +99,10 @@
 </div>
 
 
-<footer style="position: fixed; bottom: 0; left: 50%; transform: translateX(-50%)">
-    <a class="text-2xl nhome">Home</a>
+<footer style="mix-blend-mode: difference;position: fixed; bottom: 0; left: 50%; transform: translateX(-50%)">
+    <a class="text-2xl act nhome">Home</a>
     <a class="text-2xl nprojects">Projects</a>
-    <a class="text-2xl act ncs">My coding stuff</a>
+    <a class="text-2xl nts">My tech stack</a>
     <a class="text-2xl nsocial">Social</a>
 </footer>
 </body>
@@ -144,6 +144,7 @@
         border-bottom: 2px solid lightblue;
         cursor: pointer;
         transition: all 0.25s;
+        mix-blend-mode: difference;
     }
 
     footer .act {
@@ -156,7 +157,7 @@
         border-bottom: 2px solid lightgreen;
     }
 
-    .home + .projects + .codingstuff + .social {
+    .home + .projects + .techstack + .social {
         transition: opacity 0.5s, transform 0.5s;
     }
 
@@ -168,21 +169,19 @@
         transition: opacity 0.5s, transform 0.5s;
     }
 
-    .codingstuff * {
-        transition: opacity 0.5s, transform 0.5s;
-    }
 
     .social * {
         transition: opacity 0.5s, transform 0.5s;
     }
 
     .badges a {
-        margin-right: 3px;
         margin-top: 8px;
         display: inline-block;
         vertical-align: top;
+        transition: opacity 0.5s, transform 0.5s;
     }
     .badges a img {
+        padding-right: 15px;
         width: 100%;
         height: 6em;
         transform: scale(0.80)
@@ -191,112 +190,192 @@
 <script>
     const homeContent = document.querySelector(".home")
     const projectsContent = document.querySelector(".projects")
-    const codingStuffContent = document.querySelector(".codingstuff")
+    const techStackContent = document.querySelector(".techstack")
     const socialContent = document.querySelector(".social")
     const homeNav = document.querySelector(".nhome")
     const projectsNav = document.querySelector(".nprojects")
-    const codingStuffNav = document.querySelector(".ncs")
+    const techStackNav = document.querySelector(".nts")
     const socialNav = document.querySelector(".nsocial")
     let hd = 100
     let pd = 100
-    let csd = 50
+    let tsd = 100
     let sd = 100
+    let act = "ts"
+    let dnc = false
+    Array.prototype.random = function () {
+        return this[Math.floor((Math.random() * this.length))];
+    }
+    function shuffle(array) {
+        const newArray = [...array]
+        const length = newArray.length
+
+        for (let start = 0; start < length; start++) {
+            const randomPosition = Math.floor((newArray.length - start) * Math.random())
+            const randomItem = newArray.splice(randomPosition, 1)
+
+            newArray.push(...randomItem)
+        }
+
+        return newArray
+    }
+
+    function updateTitle() {
+        if(dnc) {
+            setTimeout(updateTitle, 1500)
+            return
+        }
+        const t = document.querySelector(".title");
+        let hn = ["STEEVE<br>BLLOX<br>&nbsp;", "STEVEE<br>BLLOX<br>&nbsp;", "STEVEE<br>BLOOX<br>&nbsp;", "STEEVE<br>BLOOX<br>&nbsp;", "STEEVE<br>BLLOX<br>&nbsp;", "STEVEE<br>BLLOX<br>&nbsp;", "STEEVE<br>BBLOX<br>&nbsp;", "STEVEE<br>BBLOX<br>&nbsp;"];
+        let pn = ["MY<br>PROOJECTS<br>&nbsp;", "MY<br>PRROJECTS<br>&nbsp;", "MY<br>PPROJECTS<br>&nbsp;", "MY<br>PROJEECTS<br>&nbsp;", "MY<br>PROJJECTS<br>&nbsp;"];
+        let tsn = ["MY<br>TEECH<br>STACKK", "MY<br>TECHH<br>STACKK", "MY<br>TECH<br>STACK", "MY<br>TEECH<br>STACK", "MY<br>TECH<br>STACKK"];
+        let sn = ["MY<br>SOOCIALS<br>&nbsp;", "MY<br>SOCIAALS<br>&nbsp;", "MY<br>SOCIALLS<br>&nbsp;", "MY<br>SOCCIALS<br>&nbsp;"];
+
+        if (act === "h") {
+            t.innerHTML = hn.random()
+        } else if (act === "p") {
+            t.innerHTML = pn.random()
+        } else if (act === "ts") {
+            t.innerHTML = tsn.random()
+        } else if (act === "s") {
+            t.innerHTML = sn.random()
+        }
+        setTimeout(updateTitle, 1500)
+    }
+    updateTitle()
     homeNav.addEventListener("click", () => {
+        dnc=true
+        window.history.replaceState({}, '','/');
+        $(".title").fadeOut()
         document.querySelectorAll(".home *").forEach(e => {
             e.style.display = "";
             e.style.opacity = "0"
+            e.style.transform = "translateY(" + 50 + "px)"
         })
         homeContent.style.display = "flex"
         for (let i = 0; i < document.querySelectorAll(".home *").length; i++) {
             eval(`
-                let appearTimeout = setTimeout(() => {
+                setTimeout(() => {
                     var els = document.querySelectorAll(".home *")
+                    els[${i}].style.transition += " opacity 0.5s, transform 0.5s"
+                    els[${i}].style.transform = "translateY(0px)"
                     els[${i}].style.opacity = "1"
                 }, ` + i + `*
             hd
             )
             `)
         }
+        setTimeout(()=>{$(".title").html("STEEVE<br>BLLOX<br>&nbsp;");dnc=false;}, 450)
+        $(".title").fadeIn()
         projectsContent.style.display = "none"
-        codingStuffContent.style.display = "none"
+        techStackContent.style.display = "none"
         socialContent.style.display = "none"
         homeNav.classList.add("act")
         projectsNav.classList.remove("act")
-        codingStuffNav.classList.remove("act")
+        techStackNav.classList.remove("act")
         socialNav.classList.remove("act")
+        act = "h"
     })
     projectsNav.addEventListener("click", () => {
+        dnc=true
+        window.history.replaceState({}, '','/projects');
+        $(".title").fadeOut()
         document.querySelectorAll(".projects *").forEach(e => {
             e.style.display = "";
             e.style.opacity = "0"
+            e.style.transform = "translateY(" + 50 + "px)"
         })
         projectsContent.style.display = "flex"
         for (let i = 0; i < document.querySelectorAll(".projects *").length; i++) {
             eval(`
-                let appearTimeout = setTimeout(() => {
+                setTimeout(() => {
                     var els = document.querySelectorAll(".projects *")
+                    els[${i}].style.transition += " opacity 0.5s, transform 0.5s"
+                    els[${i}].style.transform = "translateY(0px)"
                     els[${i}].style.opacity = "1"
                 }, ` + i + `*
             pd
             )
             `)
         }
+        setTimeout(()=>{$(".title").html("MY<br>PROOJECTS<br>&nbsp;");dnc=false}, 450)
+        $(".title").fadeIn()
         homeContent.style.display = "none"
-        codingStuffContent.style.display = "none"
+        techStackContent.style.display = "none"
         socialContent.style.display = "none"
         homeNav.classList.remove("act")
         projectsNav.classList.add("act")
-        codingStuffNav.classList.remove("act")
+        techStackNav.classList.remove("act")
         socialNav.classList.remove("act")
+        act = "p"
     })
-    codingStuffNav.addEventListener("click", () => {
-        document.querySelectorAll(".codingstuff *").forEach(e => {
+    let els = ""
+    techStackNav.addEventListener("click", () => {
+        dnc=true
+        window.history.replaceState({}, '','/techStack');
+        $(".title").fadeOut()
+        document.querySelectorAll(".techstack img").forEach(e => {
             e.style.display = "";
             e.style.opacity = "0"
+            e.style.transform = "translateY(" + 50 + "px)"
         })
-        $(".title").html("MY<br>COODING<br>STUFF&zwnj;F")
-        codingStuffContent.style.display = "flex"
-        for (let i = 0; i < document.querySelectorAll(".codingstuff *").length; i++) {
+        techStackContent.style.display = "flex"
+        els = document.querySelectorAll(".techstack img")
+        els = shuffle(els)
+        for (let i = 0; i < els.length; i++) {
             eval(`
-                let appearTimeout = setTimeout(() => {
-                    var els = document.querySelectorAll(".codingstuff *")
-                    els[${i}].style.opacity = "1"
+                setTimeout(() => {
+                    let el = els[0]
+                    el.style.transition += " opacity 0.5s, transform 0.5s"
+                    el.style.transform = "translateY(0px)"
+                    el.style.opacity = "1"
+                    els.shift()
                 }, ` + i + `*
-            csd
+            tsd
             )
             `)
         }
+        setTimeout(()=>{$(".title").html("MY<br>TEECH<br>STACKK");dnc=false}, 450)
+        $(".title").fadeIn()
         homeContent.style.display = "none"
         projectsContent.style.display = "none"
         socialContent.style.display = "none"
         homeNav.classList.remove("act")
         projectsNav.classList.remove("act")
-        codingStuffNav.classList.add("act")
+        techStackNav.classList.add("act")
         socialNav.classList.remove("act")
+        act = "ts"
     })
     socialNav.addEventListener("click", () => {
+        window.history.replaceState({}, '','/social');
+        $(".title").fadeOut()
         document.querySelectorAll(".social *").forEach(e => {
             e.style.display = "";
             e.style.opacity = "0"
+            e.style.transform = "translateY(" + 50 + "px)"
         })
         socialContent.style.display = "flex"
         for (let i = 0; i < document.querySelectorAll(".social *").length; i++) {
             eval(`
-                let appearTimeout = setTimeout(() => {
+                setTimeout(() => {
                     var els = document.querySelectorAll(".social *")
+                    els[${i}].style.transition += " opacity 0.5s, transform 0.5s"
+                    els[${i}].style.transform = "translateY(0px)"
                     els[${i}].style.opacity = "1"
                 }, ` + i + `*
             sd
             )
             `)
         }
+        setTimeout(()=>{$(".title").html("MY<br>SOOCIALS<br>&nbsp;");dnc=false}, 450)
+        $(".title").fadeIn()
         homeContent.style.display = "none"
         projectsContent.style.display = "none"
-        codingStuffContent.style.display = "none"
+        techStackContent.style.display = "none"
         homeNav.classList.remove("act")
         projectsNav.classList.remove("act")
-        codingStuffNav.classList.remove("act")
+        techStackNav.classList.remove("act")
         socialNav.classList.add("act")
+        act = "s"
     })
 </script>
 </html>
