@@ -10,7 +10,7 @@
             src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>SteveBloX</title>
 </head>
-<body>
+<body class="mb-20">
 <h1 class="title text-6xl pb-20">MY<br>TECH<br>STACKK</h1>
 
 <div class="content home flex items-center justify-center" style="">
@@ -19,13 +19,19 @@
 
 </div>
 
-<div class="content projects flex justify-center" style="display: none">
+<div class="content projects flex justify-center items-center flex-col" style="display: none">
     <!--PROJECTS-->
-    <div class="card flex" style="display: grid; grid-template-columns: 1fr;grid-template-rows: 1fr 1fr 1fr;gap: 30px 30px;grid-template-areas:'.' '.' '.'; ">
-        <p class="ml-2.5 text-2xl">Pastastudio</p>
-        <p class="ml-2.5 text-xl">Pastastudio is an app development studio that I created with a friend.</p>
-        <a href="https://pasta.studio" target="_blank" class="text-2xl text-amber-600">Website</a>
+    <div class="card flex flex-col justify-start rounded-lg mb-20">
+        <p class="ml-2.5 text-3xl pl-3 pt-5">Pastastudio</p>
+        <p class="ml-2.5 text-xl mx-20 p-5">Pastastudio is an app development studio that I created with a friend.</p>
+        <a class="text-2xl text-amber-600 pl-5 pb-5" href="https://pasta.studio" target="_blank">Website</a>
     </div>
+    <div class="card flex flex-col justify-start rounded-lg">
+        <p class="ml-2.5 text-3xl pl-3 pt-5">JsStyle</p>
+        <p class="ml-2.5 text-xl mx-20 p-5">JsStyle is a JavaScript library that helps the developper make better console messages.</p>
+        <a class="text-2xl cursor-not-allowed text-amber-600 pl-5 pb-5" href="javascript:void(0)">Website</a>
+    </div>
+
 </div>
 
 <div class="content techstack flex" style="display: none">
@@ -101,12 +107,20 @@
             style="max-width: 100%;"></a></p>
 </div>
 
-<div class="content social flex items-center justify-center" style="display: none">
+<div class="content social text-center" style="display: none">
     <!--SOCIAL-->
+    <a class="text-5xl text-emerald-200 hover:text-teal-500" href="https://github.com/SteveBloX" target="_blank">Github:
+        @SteveBloX</a><br><br>
+    <a class="text-5xl text-emerald-200 hover:text-teal-500" href="javascript:void(0)">Discord:
+        SteveBloX#8818</a><br><br>
+    <a class="text-5xl text-emerald-200 hover:text-teal-500" href="https://www.tiktok.com/@steveblx" target="_blank">Tiktok:
+        @steveblx</a><br><br>
+    <a class="text-5xl text-emerald-200 hover:text-teal-500" href="https://stackoverflow.com/users/19749646"
+       target="_blank">Stackoverflow: 19749646 (steveblox)</a>
 </div>
 
 
-<footer>
+<footer class="">
     <a class="text-2xl act nhome">Home</a>
     <a class="text-2xl nprojects">Projects</a>
     <a class="text-2xl nts">My tech stack</a>
@@ -139,6 +153,34 @@
         margin-top: 50px;
 
     }
+
+    .social a {
+        position: relative;
+        transition: all 0.5s;
+    }
+
+    /*animated underline when hovering*/
+    .social a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #3b56ff;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .social a:hover::after {
+        visibility: visible;
+        width: 100%;
+    }
+
+    .social a:active::after {
+        background: red;
+    }
+
 
     footer {
         padding-top: 10px;
@@ -203,25 +245,44 @@
     .badges {
         transition: all 0.5s;
     }
+
     .card {
-        box-sizing: border-box;
-        width: auto;
-        height: 254px;
-        background: rgba(217, 217, 217, 0.58);
-        border: 1px solid white;
-        box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
-        backdrop-filter: blur(6px);
-        border-radius: 17px;
-        text-align: center;
-        cursor: pointer;
+        background: #282828;
+        filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.4));
         transition: all 0.5s;
+        max-width: 50em;
     }
 
-    .card:hover {
-        border: 1px solid black;
-        transform: scale(1.05);
+    .projects {
+        height: 80%;
+        overflow-y: auto;
+    }
+/*
+    *::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #F5F5F5;
     }
 
+    *::-webkit-scrollbar {
+        width: 10px;
+        background-color: #F5F5F5;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: #F90;
+        background-image: -webkit-linear-gradient(45deg,
+        rgba(255, 255, 255, .2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, .2) 50%,
+        rgba(255, 255, 255, .2) 75%,
+        transparent 75%,
+        transparent)
+    }
+*/
+    *::-webkit-scrollbar {
+        display: none;
+    }
 </style>
 <script>
     const homeContent = document.querySelector(".home")
@@ -255,47 +316,60 @@
         return newArray
     }
 
-    function badgesAnim(){
-        let els = ""
-        document.querySelectorAll(".techstack img").forEach(e => {
-            e.style.display = "";
-            e.style.opacity = "0"
-            e.style.transform = "translateY(" + 50 + "px)"
-        })
-        els = document.querySelectorAll(".techstack img")
-        els = shuffle(els)
-        for (let i = 0; i < els.length; i++) {
-            eval(`
-                setTimeout(() => {
-                    let el = els[0]
-                    el.style.transition += " opacity 0.5s, transform 0.5s"
-                    el.style.transform = "translateY(0px)"
-                    el.style.opacity = "1"
-                    els.shift()
-                }, ` + i + `*
-            tsd
-            )
-            `)
-        }
-        for (let i = 0; i < els.length; i++) {
-            eval(`
-                setTimeout(() => {
-                    let el = els[0]
-                    el.style.transition += " opacity 0.5s, transform 0.5s"
-                    el.style.transform = "translateY(50px)"
-                    el.style.opacity = "0"
-                    els.shift()
-                }, ` + i + `*
-            tsd
-            )
-            `)
-        }
+    /*
+        function badgesAnim(){
+            let els = ""
+            document.querySelectorAll(".techstack img").forEach(e => {
+                e.style.display = "";
+                e.style.opacity = "0"
+                e.style.transform = "translateY(" + 50 + "px)"
+            })
+            els = document.querySelectorAll(".techstack img")
+            els = shuffle(els)
+            for (let i = 0; i < els.length; i++) {
+                eval(`
+                    setTimeout(() => {
+                        let el = els[0]
+                        el.style.transition += " opacity 0.5s, transform 0.5s"
+                        el.style.transform = "translateY(0px)"
+                        el.style.opacity = "1"
+                        els.shift()
+                    }, ` + i + `*
+                tsd
+                )
+                `)
+            }
+            for (let i = 0; i < els.length; i++) {
+                eval(`
+                    setTimeout(() => {
+                        let el = els[0]
+                        el.style.transition += " opacity 0.5s, transform 0.5s"
+                        el.style.transform = "translateY(50px)"
+                        el.style.opacity = "0"
+                        els.shift()
+                    }, ` + i + `*
+                tsd
+                )
+                `)
+            }
+            /*
+            setTimeout(()=>{
+                //shuffle badges and apply
+                let badges = document.querySelectorAll(".techstack a")
+                badges = shuffle(badges)
+                let badgesContainer = document.querySelector(".badges")
+                badgesContainer.innerHTML = ""
+                badges.forEach(badge => {
+                    badgesContainer.appendChild(badge)
+                })
+
+            }, 200)*//*
         setTimeout(badgesAnim, 2000)
     }
-    badgesAnim()
+    badgesAnim()*/
 
     function updateTitle() {
-        if(dnc) {
+        if (dnc) {
             setTimeout(updateTitle, 1500)
             return
         }
@@ -422,17 +496,17 @@
     socialNav.addEventListener("click", () => {
         //window.history.replaceState({}, '','/social');
         $(".title").fadeOut()
-        document.querySelectorAll(".social *").forEach(e => {
+        document.querySelectorAll(".social a").forEach(e => {
             e.style.display = "";
             e.style.opacity = "0"
             e.style.transform = "translateY(" + 50 + "px)"
         })
-        socialContent.style.display = "flex"
-        for (let i = 0; i < document.querySelectorAll(".social *").length; i++) {
+        socialContent.style.display = ""
+        for (let i = 0; i < document.querySelectorAll(".social a").length; i++) {
             eval(`
                 setTimeout(() => {
-                    var els = document.querySelectorAll(".social *")
-                    els[${i}].style.transition += " opacity 0.5s, transform 0.5s"
+                    var els = document.querySelectorAll(".social a")
+                    els[${i}].style.transition += " color 0.2s, opacity 0.5s, transform 0.5s"
                     els[${i}].style.transform = "translateY(0px)"
                     els[${i}].style.opacity = "1"
                 }, ` + i + `*
