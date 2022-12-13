@@ -150,7 +150,7 @@
 </div>
 
 
-<footer>
+<footer class="">
     <a class="text-2xl act nhome">Home</a>
     <a class="text-2xl nprojects">Projects</a>
     <a class="text-2xl nts" style="white-space: nowrap;">Tech stack</a>
@@ -247,7 +247,7 @@
     }
     @media (min-width : 767px) {
         .scard:not(:hover) {
-            opacity: 0.2;
+            opacity: 0.5;
         }
     }
     /*if no card is hovered, set all cards opacity to 1*/
@@ -362,15 +362,15 @@
         document.querySelectorAll(".home *").forEach(e => {
             e.style.display = "";
             e.style.opacity = "0"
-            e.style.transform += " translateY(" + 50 + "px)"
+            e.style.transform = "translateY(" + 50 + "px)"
         })
         homeContent.style.display = ""
         for (let i = 0; i < document.querySelectorAll(".home *").length; i++) {
             eval(`
                 setTimeout(() => {
                     var els = document.querySelectorAll(".home *")
-                    els[${i}].style.transition += " opacity 0.5s, transform 0.5s"
-                    els[${i}].style.transform += " translateY(0px)"
+                    els[${i}].style.transition = "al 0.5s;"
+                    els[${i}].style.transform = "translateY(0px)"
                     els[${i}].style.opacity = "1"
                 }, ` + i + `*
             hd
