@@ -11,7 +11,7 @@
     <title>SteveBloX</title>
 </head>
 <body class="mb-20">
-<h1 class="title text-6xl pb-20">MY<br>TECH<br>STACKK</h1>
+<h1 class="title text-6xl pb-20">TECH<br>STACKK</h1>
 
 <div class="content home flex items-center justify-center" style="">
     <!--HOME-->
@@ -117,21 +117,21 @@
             <a class="text-2xl text-sky-300" href="https://github.com/SteveBloX" target="_blank">SteveBloX</a>
         </div>
         <div class="scard flex flex-col justify-center rounded-lg p-10">
-            <img src="assets/images/logos/discord-mark-blue.png" style="width: 10em;height: auto;" class="pb-8" alt="Discord logo">
+            <img src="assets/images/logos/discord-mark-blue.png" style="width: 10em;height: auto;" alt="Discord logo">
             <p class="text-3xl py-10" style="font-family:notstretch,sans-serif">DISCORD</p>
             <p class="text-xl mb-5">If you want to send me a message, feel free to make a friend request.</p>
-            <a class="text-2xl text-sky-300" onclick="navigator.clipboard.writeText('SteveBloX#8818');alert('Successfully copied')">SteveBloX#8818</a>
+            <a class="text-2xl text-sky-300 cursor-pointer" onclick="navigator.clipboard.writeText('SteveBloX#8818');alert('Successfully copied')">SteveBloX#8818</a>
         </div>
         <div class="scard flex flex-col justify-center rounded-lg p-10">
             <img src="assets/images/logos/tiktok-mark.png" style="width: 9em;height: auto;margin-top:-10px;" alt="Tiktok logo">
             <p class="text-3xl py-10" style="font-family:notstretch,sans-serif">TIKTOK</p>
-            <p class="text-xl mb-5">I make some videos on TikTok. Maybe you can like them?</p>
+            <p class="text-xl mb-5">I make some videos about programming on TikTok. Maybe you can like them?</p>
             <a class="text-2xl text-sky-300 cursor-pointer" href="https://www.tiktok.com/@steveblx" target="_blank">@steveblx</a>
         </div>
         <div class="scard flex flex-col justify-center rounded-lg p-10">
-            <img src="assets/images/logos/stackoverflow-mark.png" style="width: 8.5em;height: auto;" alt="Stackoverflow logo">
+            <img src="assets/images/logos/stackoverflow-mark.png" style="width: 7.5em;height: auto;" alt="Stackoverflow logo">
             <p class="text-3xl py-10" style="font-family:notstretch,sans-serif">STACK<wbr>OVERFLOW</p>
-            <p class="text-xl mb-5">You can find all of my questions on my profile.</p>
+            <p class="text-xl mb-5">You can find all of my questions and answers on my profile.</p>
             <a class="text-2xl text-sky-300" href="https://stackoverflow.com/users/19749646" target="_blank">steveblox</a>
         </div>
 
@@ -150,7 +150,7 @@
 </div>
 
 
-<footer class="">
+<footer>
     <a class="text-2xl act nhome">Home</a>
     <a class="text-2xl nprojects">Projects</a>
     <a class="text-2xl nts" style="white-space: nowrap;">Tech stack</a>
@@ -237,6 +237,25 @@
         transition: all 0.5s;
         max-width: 20em;
         justify-content: center;
+    }
+    .scard:hover{
+        scale: 1.1;
+    }
+    /*change opacity of all cards except the hovered one*/
+    .scard{
+        opacity: 1;
+    }
+    .scard:not(:hover) {
+        opacity: 0.2;
+    }
+    /*if no card is hovered, set all cards opacity to 1*/
+
+
+    .scard:hover {
+        scale: 1.1;
+    }
+    .scard:active {
+        scale: 1.15;
     }
 
     .badges a {
@@ -336,12 +355,12 @@
     }
     updateTitle()
     homeNav.addEventListener("click", () => {
-        dnc=true
+        if(act === "h") return
         $(".title").fadeOut()
         document.querySelectorAll(".home *").forEach(e => {
             e.style.display = "";
             e.style.opacity = "0"
-            e.style.transform = "translateY(" + 50 + "px)"
+            e.style.transform += " translateY(" + 50 + "px)"
         })
         homeContent.style.display = ""
         for (let i = 0; i < document.querySelectorAll(".home *").length; i++) {
@@ -349,7 +368,7 @@
                 setTimeout(() => {
                     var els = document.querySelectorAll(".home *")
                     els[${i}].style.transition += " opacity 0.5s, transform 0.5s"
-                    els[${i}].style.transform = "translateY(0px)"
+                    els[${i}].style.transform += " translateY(0px)"
                     els[${i}].style.opacity = "1"
                 }, ` + i + `*
             hd
@@ -368,6 +387,7 @@
         act = "h"
     })
     projectsNav.addEventListener("click", () => {
+        if(act === "p") return
         dnc=true
         $(".title").fadeOut()
         document.querySelectorAll(".projects *").forEach(e => {
@@ -400,6 +420,7 @@
     })
     let els = ""
     techStackNav.addEventListener("click", () => {
+        if(act === "ts") return
         dnc=true
         $(".title").fadeOut()
         document.querySelectorAll(".techstack img").forEach(e => {
@@ -435,9 +456,12 @@
         act = "ts"
     })
     socialNav.addEventListener("click", () => {
+        if(act === "s") return
         $(".title").fadeOut()
+        let oldOpacitys = []
         document.querySelectorAll(".social *").forEach(e => {
             e.style.display = "";
+            oldOpacitys.push(e.style.opacity)
             e.style.opacity = "0"
             e.style.transform = "translateY(" + 50 + "px)"
         })
@@ -446,9 +470,8 @@
             eval(`
                 setTimeout(() => {
                     var els = document.querySelectorAll(".social *")
-                    els[${i}].style.transition += " color 0.2s, opacity 0.5s, transform 0.5s"
                     els[${i}].style.transform = "translateY(0px)"
-                    els[${i}].style.opacity = "1"
+                    els[${i}].style.opacity = oldOpacitys[${i}]
                 }, ` + i + `*
             sd
             )
