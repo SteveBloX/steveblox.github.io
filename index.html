@@ -22,14 +22,14 @@
 <div class="content projects flex justify-center items-center flex-col" style="display: none">
     <!--PROJECTS-->
     <div class="card flex flex-col justify-start rounded-lg mb-20">
-        <p class="ml-2.5 text-3xl pl-3 pt-5">Pastastudio</p>
+        <p class="ml-2.5 text-3xl pl-3 pt-5" style="font-family:notstretch,sans-serif">PASTASTUDIO</p>
         <p class="ml-2.5 text-xl mx-20 p-5">Pastastudio is an app development studio that I created with a friend.</p>
-        <a class="text-2xl text-amber-600 pl-5 pb-5" href="https://pasta.studio" target="_blank">Website</a>
+        <a class="text-2xl text-sky-300 pl-5 pb-5" href="https://pasta.studio" target="_blank">Website</a>
     </div>
     <div class="card flex flex-col justify-start rounded-lg">
-        <p class="ml-2.5 text-3xl pl-3 pt-5">JsStyle</p>
+        <p class="ml-2.5 text-3xl pl-3 pt-5" style="font-family:notstretch,sans-serif">JS&zwnj;STYLE</p>
         <p class="ml-2.5 text-xl mx-20 p-5">JsStyle is a JavaScript library that helps the developper make better console messages.</p>
-        <a class="text-2xl cursor-not-allowed text-amber-600 pl-5 pb-5" href="javascript:void(0)">Website</a>
+        <a class="text-2xl cursor-not-allowed text-sky-300 pl-5 pb-5" href="javascript:void(0)">Website</a>
     </div>
 
 </div>
@@ -123,7 +123,7 @@
 <footer class="">
     <a class="text-2xl act nhome">Home</a>
     <a class="text-2xl nprojects">Projects</a>
-    <a class="text-2xl nts" style="white-space: nowrap;">My tech stack</a>
+    <a class="text-2xl nts" style="white-space: nowrap;">Tech stack</a>
     <a class="text-2xl nsocial">Social</a>
 </footer>
 </body>
@@ -263,6 +263,9 @@
             font-size: 2em;
         }
     }
+    .projects *{
+        transition: all 0.5s;
+    }
 </style>
 <script>
     const homeContent = document.querySelector(".home")
@@ -302,10 +305,10 @@
             return
         }
         const t = document.querySelector(".title");
-        let hn = ["STEEVE<br>BLLOX<br>&nbsp;", "STEVEE<br>BLLOX<br>&nbsp;", "STEVEE<br>BLOOX<br>&nbsp;", "STEEVE<br>BLOOX<br>&nbsp;", "STEEVE<br>BLLOX<br>&nbsp;", "STEVEE<br>BLLOX<br>&nbsp;", "STEEVE<br>BBLOX<br>&nbsp;", "STEVEE<br>BBLOX<br>&nbsp;"];
-        let pn = ["MY<br>PROOJECTS<br>&nbsp;", "MY<br>PRROJECTS<br>&nbsp;", "MY<br>PPROJECTS<br>&nbsp;", "MY<br>PROJEECTS<br>&nbsp;", "MY<br>PROJJECTS<br>&nbsp;"];
-        let tsn = ["MY<br>TEECH<br>STACKK", "MY<br>TECHH<br>STACKK", "MY<br>TECH<br>STACK", "MY<br>TEECH<br>STACK", "MY<br>TECH<br>STACKK"];
-        let sn = ["MY<br>SOOCIALS<br>&nbsp;", "MY<br>SOCIAALS<br>&nbsp;", "MY<br>SOCIALLS<br>&nbsp;", "MY<br>SOCCIALS<br>&nbsp;"];
+        let hn = ["STEEVE<br>BLLOX", "STEVEE<br>BLLOX", "STEVEE<br>BLOOX", "STEEVE<br>BLOOX", "STEEVE<br>BLLOX", "STEVEE<br>BLLOX", "STEEVE<br>BBLOX", "STEVEE<br>BBLOX"];
+        let pn = ["MY<br>PROOJECTS", "MY<br>PRROJECTS", "MY<br>PPROJECTS", "MY<br>PROJEECTS", "MY<br>PROJJECTS"];
+        let tsn = ["TEECH<br>STACKK", "TECHH<br>STACKK", "TECH<br>STACK", "TEECH<br>STACK", "TECH<br>STACKK"];
+        let sn = ["MY<br>SOOCIALS", "MY<br>SOCIAALS", "MY<br>SOCIALLS", "MY<br>SOCCIALS"];
 
         if (act === "h") {
             t.innerHTML = hn.random()
@@ -340,7 +343,7 @@
             )
             `)
         }
-        setTimeout(()=>{$(".title").html("STEEVE<br>BLLOX<br>&nbsp;");dnc=false;}, 450)
+        setTimeout(()=>{$(".title").html("STEEVE<br>BLLOX");dnc=false;}, 450)
         $(".title").fadeIn()
         projectsContent.style.display = "none"
         techStackContent.style.display = "none"
@@ -354,16 +357,16 @@
     projectsNav.addEventListener("click", () => {
         dnc=true
         $(".title").fadeOut()
-        document.querySelectorAll(".projects .card").forEach(e => {
+        document.querySelectorAll(".projects *").forEach(e => {
             e.style.display = "";
             e.style.opacity = "0"
             e.style.transform = "translateY(" + 50 + "px)"
         })
         projectsContent.style.display = "flex"
-        for (let i = 0; i < document.querySelectorAll(".projects .card").length; i++) {
+        for (let i = 0; i < document.querySelectorAll(".projects *").length; i++) {
             eval(`
                 setTimeout(() => {
-                    var els = document.querySelectorAll(".projects .card")
+                    var els = document.querySelectorAll(".projects *")
                     els[${i}].style.transform = "translateY(0px)"
                     els[${i}].style.opacity = "1"
                 }, ` + i + `*
@@ -371,7 +374,7 @@
             )
             `)
         }
-        setTimeout(()=>{$(".title").html("MY<br>PROOJECTS<br>&nbsp;");dnc=false}, 450)
+        setTimeout(()=>{$(".title").html("MY<br>PROOJECTS");dnc=false}, 450)
         $(".title").fadeIn()
         homeContent.style.display = "none"
         techStackContent.style.display = "none"
@@ -407,7 +410,7 @@
             )
             `)
         }
-        setTimeout(()=>{$(".title").html("MY<br>TEECH<br>STACKK");dnc=false}, 450)
+        setTimeout(()=>{$(".title").html("TEECH<br>STACKK");dnc=false}, 450)
         $(".title").fadeIn()
         homeContent.style.display = "none"
         projectsContent.style.display = "none"
@@ -439,7 +442,7 @@
             )
             `)
         }
-        setTimeout(()=>{$(".title").html("MY<br>SOOCIALS<br>&nbsp;");dnc=false}, 450)
+        setTimeout(()=>{$(".title").html("MY<br>SOOCIALS");dnc=false}, 450)
         $(".title").fadeIn()
         homeContent.style.display = "none"
         projectsContent.style.display = "none"
