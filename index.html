@@ -156,6 +156,7 @@
     <a class="text-2xl nts" style="white-space: nowrap;">Tech stack</a>
     <a class="text-2xl nsocial">Social</a>
 </footer>
+<div class="pt-40"></div>
 </body>
 <style>
     @font-face {
@@ -218,6 +219,9 @@
     footer a:hover {
         border-bottom: 2px solid lightgreen;
     }
+    .techstack img:hover{
+        scale: 1.1;
+    }
 
     .home + .projects + .techstack + .social {
         transition: opacity 0.5s, transform 0.5s;
@@ -226,7 +230,6 @@
     .home * {
         transition: opacity 0.5s, transform 0.5s;
     }
-
     .social * {
         transition: all 0.5s;
     }
@@ -284,10 +287,8 @@
         transition: all 0.5s;
         max-width: 50em;
     }
-
-    .projects {
-        height: 80%;
-        overflow-y: auto;
+    .card:hover{
+        scale: 1.025;
     }
     *::-webkit-scrollbar {
         display: none;
@@ -437,7 +438,7 @@
             eval(`
                 setTimeout(() => {
                     let el = els[0]
-                    el.style.transition += " opacity 0.5s, transform 0.5s"
+                    el.style.transition = "opacity 0.5s, transform 0.5s, scale 0.5s"
                     el.style.transform = "translateY(0px)"
                     el.style.opacity = "1"
                     els.shift()
