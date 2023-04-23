@@ -347,6 +347,13 @@
         }
         setTimeout(updateTitle, 1500)
     }
+    document.querySelectorAll("img").forEach((img)=>{
+        let parent = img.parentElement
+        let wrapper = document.createElement("a")
+        parent.replaceChild(wrapper, img)
+        wrapper.appendChild(img)
+        img.style = "max-width: 100%;"
+    })
     updateTitle()
     homeNav.addEventListener("click", () => {
         if(act === "h") return
