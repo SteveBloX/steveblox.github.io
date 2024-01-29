@@ -393,13 +393,17 @@
       return this[Math.floor(Math.random() * this.length)];
     };
 
-    const backgrounds = ["1.png", "2.png"]
+    const backgroundsAmount = 11
     function setBackground(bgs) {
+      let backgrounds = []
+      for(let i=1;i>bgs;i++) {
+        backgrounds.push(i + ".png")
+      }
       const bg = backgrounds.random()
       document.querySelector(".bg").style = `background-image:url("assets/backgrounds/${bg}");background-size:cover;background-attachment: fixed;`
       console.log("Using bg " + bg)
     }
-    setBackground(backgrounds)
+    setBackground(backgroundsAmount)
 
     function shuffle(array) {
       const newArray = [...array];
