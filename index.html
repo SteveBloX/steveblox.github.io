@@ -373,10 +373,6 @@
     .projects * {
       transition: all 0.5s;
     }
-
-    .bg {
-      background-size: cover;
-    }
   </style>
   <script>
     const homeContent = document.querySelector(".home");
@@ -400,7 +396,7 @@
     const backgrounds = ["1.png", "2.png"]
     function setBackground(bgs) {
       const bg = backgrounds.random()
-      document.querySelector(".bg").style["background-image"] = `url("assets/backgrounds/${bg}")`
+      document.querySelector(".bg").style["background-image"] = `url("assets/backgrounds/${bg}");background-size:cover;`
       console.log("Using bg " + bg)
     }
     setBackground(backgrounds)
