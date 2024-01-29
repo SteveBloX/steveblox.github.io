@@ -375,7 +375,8 @@
     }
 
     .bg {
-      background-image: url("assets/background.png")
+      background-image: url("assets/background.png");
+      background-size: cover;
     }
   </style>
   <script>
@@ -396,6 +397,12 @@
     Array.prototype.random = function () {
       return this[Math.floor(Math.random() * this.length)];
     };
+
+    const backgrounds = ["1.png", "2.png"]
+    function setBackground(bgs) {
+      document.querySelector(".bg").style["background-image"] = "assets" + backgrounds.random()
+    }
+    setBackground(backgrounds)
 
     function shuffle(array) {
       const newArray = [...array];
