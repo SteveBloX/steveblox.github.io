@@ -396,7 +396,7 @@
     const backgrounds = ["1.png", "2.png"]
     function setBackground(bgs) {
       const bg = backgrounds.random()
-      document.querySelector(".bg").style["background-image"] = `url("assets/backgrounds/${bg}");background-size:cover;`
+      document.querySelector(".bg").style = `background-image:url("assets/backgrounds/${bg}");background-size:cover;`
       console.log("Using bg " + bg)
     }
     setBackground(backgrounds)
