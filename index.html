@@ -375,7 +375,6 @@
     }
 
     .bg {
-      background-image: url("assets/background.png");
       background-size: cover;
     }
   </style>
@@ -400,7 +399,9 @@
 
     const backgrounds = ["1.png", "2.png"]
     function setBackground(bgs) {
-      document.querySelector(".bg").style["background-image"] = "assets" + backgrounds.random()
+      const bg = backgrounds.random()
+      document.querySelector(".bg").style["background-image"] = `url("assets/backgrounds/${bg}")`
+      console.log("Using bg " + bg)
     }
     setBackground(backgrounds)
 
