@@ -13,7 +13,24 @@ body {
   font-family: Montserrat, sans-serif;
   height: 100%;
   margin: 0;
-  background: rgb(24, 24, 24);
+  overflow: auto;
+  position: relative;
+}
+body::before {
+  content: "";
+  position: fixed;
+  left: -5%;
+  right: -5%;
+  z-index: -1;
+
+  display: block;
+  background-color: hsla(120, 0%, 7%, 1);
+  background-size: cover;
+  background-attachment: fixed;
+  width: 110%;
+  height: 120%;
+
+  filter: blur(20px);
 }
 
 .title-container {
@@ -181,7 +198,7 @@ footer a:hover {
 
 .checkbox-container svg {
   overflow: visible;
-  margin-right: .5em;
+  margin-right: 0.5em;
 }
 
 .path {
@@ -200,7 +217,8 @@ footer a:hover {
   stroke-dashoffset: -262.2723388671875;
 }
 
-.checkbox-container svg, input {
+.checkbox-container svg,
+input {
   vertical-align: middle;
   display: inline-block;
 }

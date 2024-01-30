@@ -46,11 +46,19 @@ let sn = [
   "MY<br>SOCIALLS",
   "MY<br>SOCCIALS",
 ];
-updateTexts(hn)
+updateTexts(hn);
+
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 const backgroundsAmount = 11;
-function setBackground(bgs) {
-  let backgrounds = [];
+let point1coords = [Math.random() * 100, Math.random() * 100];
+let point2coords = [Math.random() * 100, Math.random() * 100];
+let point3coords = [Math.random() * 100, Math.random() * 100];
+const style = document.head.appendChild(document.createElement("style"));
+function setBackground(bgs = []) {
+  /*let backgrounds = [];
   for (let i = 1; i <= bgs; i++) {
     backgrounds.push(i + ".png");
   }
@@ -58,7 +66,37 @@ function setBackground(bgs) {
   document.querySelector(
     ".bg"
   ).style = `background-image:url("assets/backgrounds/${bg}");background-size:cover;background-attachment: fixed;`;
-  console.log("Using bg " + bg);
+  console.log("Using bg " + bg);*/
+  const style = document.head.appendChild(document.createElement("style"));
+  // i wanted to make the most unreadable code possible
+  const augments = 1
+  point1coords = [
+    point1coords[0] +
+      randomInt(point1coords[0] < 1 ? 0 : -augments, point1coords[1] > 99 ? 0 : augments),
+    point1coords[1] +
+      randomInt(point1coords[1] < 1 ? 0 : -augments, point1coords[1] > 99 ? 0 : augments),
+  ];
+  point2coords = [
+    point2coords[0] +
+      randomInt(point2coords[0] < 1 ? 0 : -augments, point2coords[1] > 99 ? 0 : augments),
+    point2coords[1] +
+      randomInt(point2coords[1] < 1 ? 0 : -augments, point2coords[1] > 99 ? 0 : augments),
+  ];
+  point3coords = [
+    point3coords[0] +
+      randomInt(point3coords[0] < 1 ? 0 : -augments, point3coords[1] > 99 ? 0 : augments),
+    point3coords[1] +
+      randomInt(point3coords[1] < 1 ? 0 : -augments, point3coords[1] > 99 ? 0 : augments),
+  ];
+  style.innerHTML = `.bg::before {background-image: radial-gradient(
+    at ${point1coords[0]}% ${point1coords[1]}%,
+    hsla(212, 74%, 42%, 1) 0px,
+    transparent 50%
+  ),
+  radial-gradient(at ${point2coords[0]}% ${point2coords[1]}%, hsla(241, 0%, 7%, 1) 0px, transparent 50%),
+  radial-gradient(at ${point3coords[0]}% ${point3coords[1]}%, hsla(212, 74%, 42%, 1) 0px, transparent 50%);}`;
+  
+  setTimeout(setBackground, 100)
 }
 setBackground(backgroundsAmount);
 
@@ -78,10 +116,10 @@ function shuffle(array) {
   return newArray;
 }
 
-// when checkbox 
-document.getElementById("nolag").addEventListener('change', (e) => {
-    pauseResume(e.target.checked)
-})
+// when checkbox
+document.getElementById("nolag").addEventListener("change", (e) => {
+  pauseResume(e.target.checked);
+});
 
 document.querySelectorAll("img").forEach((img) => {
   let parent = img.parentElement;
@@ -92,7 +130,7 @@ document.querySelectorAll("img").forEach((img) => {
 });
 homeNav.addEventListener("click", () => {
   if (act === "h") return;
-  updateTexts(hn)
+  updateTexts(hn);
   document.querySelectorAll(".home *").forEach((e) => {
     e.style.display = "";
     e.style.opacity = "0";
@@ -129,7 +167,7 @@ homeNav.addEventListener("click", () => {
 });
 projectsNav.addEventListener("click", () => {
   if (act === "p") return;
-  updateTexts(pn)
+  updateTexts(pn);
   dnc = true;
   document.querySelectorAll(".projects *").forEach((e) => {
     e.style.display = "";
@@ -167,7 +205,7 @@ projectsNav.addEventListener("click", () => {
 let els = "";
 techStackNav.addEventListener("click", () => {
   if (act === "ts") return;
-  updateTexts(tsn)
+  updateTexts(tsn);
   dnc = true;
   document.querySelectorAll(".techstack img").forEach((e) => {
     e.style.display = "";
@@ -208,7 +246,7 @@ techStackNav.addEventListener("click", () => {
 });
 socialNav.addEventListener("click", () => {
   if (act === "s") return;
-  updateTexts(sn)
+  updateTexts(sn);
   let oldOpacitys = [];
   document.querySelectorAll(".social *").forEach((e) => {
     e.style.display = "";
