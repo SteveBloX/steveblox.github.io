@@ -195,7 +195,7 @@ footer a:hover {
   stroke-dashoffset: 0;
 }
 
-.checkbox-container input:checked ~ svg .path {
+.checkbox-container input:not(:checked) ~ svg .path {
   stroke-dasharray: 70.5096664428711 9999999;
   stroke-dashoffset: -262.2723388671875;
 }
