@@ -5,6 +5,12 @@ const elts = {
 	text2: document.getElementById("title2")
 };
 
+let current = []
+
+function updateTexts(t) {
+	current = t;
+}
+
 // Controls the speed of morphing.
 const morphTime = 1;
 const cooldownTime = 0.25;
@@ -42,8 +48,8 @@ function setMorph(fraction) {
 	elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
 	elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
 	
-	elts.text1.textContent = current[textIndex % current.length];
-	elts.text2.textContent = current[(textIndex + 1) % current.length];
+	elts.text1.innerHTML = current[textIndex % current.length];
+	elts.text2.innerHTML = current[(textIndex + 1) % current.length];
 }
 
 function doCooldown() {
