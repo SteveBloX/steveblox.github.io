@@ -18,6 +18,7 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       src="https://code.jquery.com/jquery-3.6.0.min.js"
     ></script>
+    <link href="style.css" rel="stylesheet" />
     <title>SteveBloX</title>
   </head>
   <body class="mb-20 bg">
@@ -27,6 +28,10 @@
     >
       SteveBloX
     </p>
+    <div class="title-container">
+      <span id="title1"></span>
+	    <span id="title2"></span>
+    </div>
     <h1 class="title text-6xl pb-20">TECH<br />STACKK</h1>
 
     <div class="content home flex items-center justify-center">
@@ -218,163 +223,7 @@
     </footer>
     <div class="pt-40"></div>
   </body>
-  <style>
-    @font-face {
-      font-family: "stretch";
-      src: url("assets/fonts/stretch/StretchPro.otf");
-    }
-
-    @font-face {
-      font-family: "notstretch";
-      src: url("assets/fonts/stretch/STRRETCH SANS.otf");
-    }
-
-    body {
-      color: white;
-      font-family: Montserrat, sans-serif;
-      height: 100%;
-      margin: 0;
-      background: rgb(24, 24, 24);
-    }
-
-    .title {
-      font-family: "stretch", sans-serif;
-      font-size: 100px;
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    footer {
-      padding-top: 10px;
-      justify-content: center;
-      display: flex;
-      font-family: notstretch, sans-serif;
-      color: white;
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      backdrop-filter: blur(25px);
-      border-radius: 20px 20px 0 0;
-      border-top: 1px solid rgb(255 255 255 / 36%);
-      border-right: 1px solid rgb(255 255 255 / 36%);
-      border-left: 1px solid rgb(255 255 255 / 36%);
-    }
-
-    footer a {
-      margin: 0 1rem;
-      padding: 5px;
-      border-bottom: 2px solid lightblue;
-      cursor: pointer;
-      transition: all 0.25s;
-      z-index: 1;
-    }
-
-    footer .act {
-      margin: 0 1rem;
-      padding: 5px;
-      border-bottom: 2px solid lightgreen;
-    }
-
-    footer a:hover {
-      border-bottom: 2px solid lightgreen;
-    }
-
-    .techstack img:hover {
-      scale: 1.1;
-    }
-
-    .home,
-    .projects,
-    .techstack,
-    .social {
-      transition: opacity 0.5s, transform 0.5s;
-    }
-
-    .home * {
-      transition: opacity 0.5s, transform 0.5s;
-    }
-
-    .social * {
-      transition: all 0.5s;
-    }
-
-    .social {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-
-    .scard {
-      background: #282828;
-      filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.4));
-      transition: all 0.5s;
-      max-width: 20em;
-      opacity: 1;
-    }
-
-    .scard:hover {
-      scale: 1.1;
-    }
-
-    @media (min-width: 767px) {
-      .scard:not(:hover) {
-        opacity: 0.5;
-      }
-    }
-
-    .scard:hover {
-      scale: 1.1;
-    }
-
-    .scard:active {
-      scale: 1.15;
-    }
-
-    .badges a {
-      margin-top: 8px;
-      display: inline-block;
-      vertical-align: top;
-      transition: opacity 0.5s, transform 0.5s;
-    }
-
-    .badges a img {
-      padding-right: 15px;
-      width: 100%;
-      height: 6em;
-      transform: scale(0.8);
-    }
-
-    .badges {
-      transition: all 0.5s;
-    }
-
-    .card {
-      background: #282828;
-      filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.4));
-      transition: all 0.5s;
-      max-width: 50em;
-    }
-
-    .card:hover {
-      scale: 1.025;
-    }
-
-    *::-webkit-scrollbar {
-      display: none;
-    }
-
-    @media only screen and (max-width: 768px) {
-      footer {
-        font-size: 2em;
-      }
-    }
-
-    .projects * {
-      transition: all 0.5s;
-    }
-  </style>
-  <script>
+  <script src="title-morph.js">
     const homeContent = document.querySelector(".home");
     const projectsContent = document.querySelector(".projects");
     const techStackContent = document.querySelector(".techstack");
@@ -392,6 +241,38 @@
     Array.prototype.random = function () {
       return this[Math.floor(Math.random() * this.length)];
     };
+
+    let hn = [
+      "STEEVE<br>BLLOX",
+      "STEVEE<br>BLLOX",
+      "STEVEE<br>BLOOX",
+      "STEEVE<br>BLOOX",
+      "STEEVE<br>BLLOX",
+      "STEVEE<br>BLLOX",
+      "STEEVE<br>BBLOX",
+      "STEVEE<br>BBLOX",
+    ];
+    let pn = [
+      "MY<br>PROOJECTS",
+      "MY<br>PRROJECTS",
+      "MY<br>PPROJECTS",
+      "MY<br>PROJEECTS",
+      "MY<br>PROJJECTS",
+    ];
+    let tsn = [
+      "TEECH<br>STACKK",
+      "TECHH<br>STACKK",
+      "TECH<br>STACK",
+      "TEECH<br>STACK",
+      "TECH<br>STACKK",
+    ];
+    let sn = [
+      "MY<br>SOOCIALS",
+      "MY<br>SOCIAALS",
+      "MY<br>SOCIALLS",
+      "MY<br>SOCCIALS",
+    ];
+    let current = hn
 
     const backgroundsAmount = 11
     function setBackground(bgs) {
@@ -421,55 +302,6 @@
       return newArray;
     }
 
-    function updateTitle() {
-      if (dnc) {
-        setTimeout(updateTitle, 1500);
-        return;
-      }
-      const t = document.querySelector(".title");
-      let hn = [
-        "STEEVE<br>BLLOX",
-        "STEVEE<br>BLLOX",
-        "STEVEE<br>BLOOX",
-        "STEEVE<br>BLOOX",
-        "STEEVE<br>BLLOX",
-        "STEVEE<br>BLLOX",
-        "STEEVE<br>BBLOX",
-        "STEVEE<br>BBLOX",
-      ];
-      let pn = [
-        "MY<br>PROOJECTS",
-        "MY<br>PRROJECTS",
-        "MY<br>PPROJECTS",
-        "MY<br>PROJEECTS",
-        "MY<br>PROJJECTS",
-      ];
-      let tsn = [
-        "TEECH<br>STACKK",
-        "TECHH<br>STACKK",
-        "TECH<br>STACK",
-        "TEECH<br>STACK",
-        "TECH<br>STACKK",
-      ];
-      let sn = [
-        "MY<br>SOOCIALS",
-        "MY<br>SOCIAALS",
-        "MY<br>SOCIALLS",
-        "MY<br>SOCCIALS",
-      ];
-
-      if (act === "h") {
-        t.innerHTML = hn.random();
-      } else if (act === "p") {
-        t.innerHTML = pn.random();
-      } else if (act === "ts") {
-        t.innerHTML = tsn.random();
-      } else if (act === "s") {
-        t.innerHTML = sn.random();
-      }
-      setTimeout(updateTitle, 1500);
-    }
-
     document.querySelectorAll("img").forEach((img) => {
       let parent = img.parentElement;
       let wrapper = document.createElement("a");
@@ -480,7 +312,7 @@
     updateTitle();
     homeNav.addEventListener("click", () => {
       if (act === "h") return;
-      $(".title").fadeOut();
+      current = hn
       document.querySelectorAll(".home *").forEach((e) => {
         e.style.display = "";
         e.style.opacity = "0";
@@ -504,10 +336,8 @@
         );
       }
       setTimeout(() => {
-        $(".title").html("STEEVE<br>BLLOX");
         dnc = false;
       }, 450);
-      $(".title").fadeIn();
       projectsContent.style.display = "none";
       techStackContent.style.display = "none";
       socialContent.style.display = "none";
@@ -519,8 +349,8 @@
     });
     projectsNav.addEventListener("click", () => {
       if (act === "p") return;
+      current = pn
       dnc = true;
-      $(".title").fadeOut();
       document.querySelectorAll(".projects *").forEach((e) => {
         e.style.display = "";
         e.style.opacity = "0";
@@ -547,10 +377,8 @@
         );
       }
       setTimeout(() => {
-        $(".title").html("MY<br>PROOJECTS");
         dnc = false;
       }, 450);
-      $(".title").fadeIn();
       homeContent.style.display = "none";
       techStackContent.style.display = "none";
       socialContent.style.display = "none";
@@ -563,8 +391,8 @@
     let els = "";
     techStackNav.addEventListener("click", () => {
       if (act === "ts") return;
+      current = tsn
       dnc = true;
-      $(".title").fadeOut();
       document.querySelectorAll(".techstack img").forEach((e) => {
         e.style.display = "";
         e.style.opacity = "0";
@@ -591,10 +419,8 @@
         );
       }
       setTimeout(() => {
-        $(".title").html("TEECH<br>STACKK");
         dnc = false;
       }, 450);
-      $(".title").fadeIn();
       homeContent.style.display = "none";
       projectsContent.style.display = "none";
       socialContent.style.display = "none";
@@ -606,7 +432,7 @@
     });
     socialNav.addEventListener("click", () => {
       if (act === "s") return;
-      $(".title").fadeOut();
+      current = sn
       let oldOpacitys = [];
       document.querySelectorAll(".social *").forEach((e) => {
         e.style.display = "";
@@ -631,10 +457,8 @@
         );
       }
       setTimeout(() => {
-        $(".title").html("MY<br>SOOCIALS");
         dnc = false;
       }, 450);
-      $(".title").fadeIn();
       homeContent.style.display = "none";
       projectsContent.style.display = "none";
       techStackContent.style.display = "none";
