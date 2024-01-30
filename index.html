@@ -35,12 +35,14 @@
     <svg id="filters">
       <defs>
         <filter id="threshold">
-          <feColorMatrix in="SourceGraphic"
-              type="matrix"
-              values="1 0 0 0 0
+          <feColorMatrix
+            in="SourceGraphic"
+            type="matrix"
+            values="1 0 0 0 0
                       0 1 0 0 0
                       0 0 1 0 0
-                      0 0 0 255 -140" />
+                      0 0 0 255 -140"
+          />
         </filter>
       </defs>
     </svg>
@@ -234,12 +236,18 @@
     </footer>
     <div class="pt-40"></div>
     <!-- no lag checkbox -->
-    <input
-      class="checkbox"
-      id="nolag"
-      type="checkbox"
-    />
-    <label class="label" for="nolag">No lag mode</label>
+
+    <label class="checkbox-container" for="nolag">
+      <input class="checkbox" id="nolag" type="checkbox" />
+      <svg viewBox="0 0 64 64" height="1em" width="1em">
+        <path
+          d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+          pathLength="575.0541381835938"
+          class="path"
+        ></path>
+      </svg>
+      No lag mode
+    </label>
   </body>
   <script src="title-morph.js"></script>
   <script src="script.js"></script>

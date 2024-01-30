@@ -10,6 +10,15 @@ let current = []
 function updateTexts(t) {
 	current = t;
 }
+let pause = false
+function pauseResume(p) {
+	pause = p;
+	// clear states
+	elts.text1.style.filter = `blur(0px)`;
+	elts.text1.style.opacity = `0`;
+	elts.text2.style.filter = `blur(0px)`;
+	elts.text2.style.opacity = `1`;
+}
 
 // Controls the speed of morphing.
 const morphTime = 1;
@@ -41,12 +50,13 @@ function doMorph() {
 function setMorph(fraction) {
 	// fraction = Math.cos(fraction * Math.PI) / -2 + .5;
 	
+	if (!pause) {
 	elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
 	elts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
 	
 	fraction = 1 - fraction;
 	elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-	elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+	elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;}
 	
 	elts.text1.innerHTML = current[textIndex % current.length];
 	elts.text2.innerHTML = current[(textIndex + 1) % current.length];
@@ -54,12 +64,12 @@ function setMorph(fraction) {
 
 function doCooldown() {
 	morph = 0;
-	
+	if (!pause) {
 	elts.text2.style.filter = "";
 	elts.text2.style.opacity = "100%";
 	
 	elts.text1.style.filter = "";
-	elts.text1.style.opacity = "0%";
+	elts.text1.style.opacity = "0%";}
 }
 
 // Animation loop, which is called every frame.

@@ -78,6 +78,11 @@ function shuffle(array) {
   return newArray;
 }
 
+// when checkbox 
+document.getElementById("nolag").addEventListener('change', (e) => {
+    pauseResume(e.target.checked)
+})
+
 document.querySelectorAll("img").forEach((img) => {
   let parent = img.parentElement;
   let wrapper = document.createElement("a");

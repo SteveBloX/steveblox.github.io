@@ -163,9 +163,44 @@ footer a:hover {
   transition: all 0.5s;
 }
 
-#noLag {
+/* Checkbox from https://uiverse.io/SelfMadeSystem/green-bobcat-29 by SelfMadeSystem */
+.checkbox-container {
   /* top right of the screen */
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-container input {
+  display: none;
+}
+
+.checkbox-container svg {
+  overflow: visible;
+  margin-right: .5em;
+}
+
+.path {
+  fill: none;
+  stroke: white;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+  stroke-dasharray: 241 9999999;
+  stroke-dashoffset: 0;
+}
+
+.checkbox-container input:checked ~ svg .path {
+  stroke-dasharray: 70.5096664428711 9999999;
+  stroke-dashoffset: -262.2723388671875;
+}
+
+.checkbox-container svg, input {
+  vertical-align: middle;
+  display: inline-block;
 }
