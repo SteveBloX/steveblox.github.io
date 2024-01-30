@@ -48,8 +48,9 @@ let sn = [
 ];
 updateTexts(hn)
 
-const backgroundsAmount = 11;
-function setBackground(bgs) {
+
+function setBackground() {
+  const bgs = 11;
   let backgrounds = [];
   for (let i = 1; i <= bgs; i++) {
     backgrounds.push(i + ".png");
@@ -60,7 +61,7 @@ function setBackground(bgs) {
   ).style = `background-image:url("assets/backgrounds/${bg}");background-size:cover;background-attachment: fixed;`;
   console.log("Using bg " + bg);
 }
-setBackground(backgroundsAmount);
+setBackground();
 
 function shuffle(array) {
   const newArray = [...array];
@@ -81,6 +82,10 @@ function shuffle(array) {
 // when checkbox 
 document.getElementById("nolag").addEventListener('change', (e) => {
     pauseResume(e.target.checked)
+    document.querySelector(".lag-text").innerHTML = e.target.checked ? "Lag disabled" : "Lag enabled"
+})
+document.getElementById("reload").addEventListener('click', () => {
+    setBackground()
 })
 
 document.querySelectorAll("img").forEach((img) => {

@@ -204,3 +204,14 @@ footer a:hover {
   vertical-align: middle;
   display: inline-block;
 }
+
+.reload-container {
+  /* top left of the screen */
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
