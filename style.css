@@ -1,3 +1,5 @@
+@import "background.css";
+
 @font-face {
   font-family: "stretch";
   src: url("assets/fonts/stretch/StretchPro.otf");
@@ -203,15 +205,4 @@ footer a:hover {
 .checkbox-container svg, input {
   vertical-align: middle;
   display: inline-block;
-}
-
-.reload-container {
-  /* top left of the screen */
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

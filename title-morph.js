@@ -1,4 +1,4 @@
-/* FROM https://codepen.io/Valgo/pen/PowZaNY */
+// From https://codepen.io/Valgo/pen/PowZaNY
 
 const elts = {
 	text1: document.getElementById("title1"),
@@ -11,13 +11,14 @@ function updateTexts(t) {
 	current = t;
 }
 let pause = false
-function pauseResume(p) {
+function pauseResumeMorph(p) {
 	pause = p;
 	// clear states
 	elts.text1.style.filter = `blur(0px)`;
 	elts.text1.style.opacity = `0`;
 	elts.text2.style.filter = `blur(0px)`;
 	elts.text2.style.opacity = `1`;
+	console.log("Morph", p ? "paused" : "resumed")
 }
 
 // Controls the speed of morphing.

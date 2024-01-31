@@ -1,3 +1,10 @@
+console.log(
+  "%c  ____  _                 ____  _     __  __\r\n / ___|| |_ _____   _____| __ )| | ___\\ \\/ /\r\n \\___ \\| __/ _ \\ \\ / / _ \\  _ \\| |/ _ \\\\  / \r\n  ___) | ||  __/\\ V /  __/ |_) | | (_) /  \\ \r\n |____/ \\__\\___| \\_/ \\___|____/|_|\\___/_/\\_\\\r\n                                            \n%cWelcome !%c\nFind the code on https://github.com/SteveBloX/steveblox.github.io\n\nYou can disable animations manually with pauseResumeMorph(true) and pauseResumeBg(true)",
+  "font-weight:bold;font-size: 20px;",
+  "font-size: 30px;font-weight:bold;color:#121212",
+  ""
+);
+
 const homeContent = document.querySelector(".home");
 const projectsContent = document.querySelector(".projects");
 const techStackContent = document.querySelector(".techstack");
@@ -46,9 +53,9 @@ let sn = [
   "MY<br>SOCIALLS",
   "MY<br>SOCCIALS",
 ];
-updateTexts(hn)
+updateTexts(hn);
 
-
+/*
 function setBackground() {
   const bgs = 11;
   let backgrounds = [];
@@ -61,7 +68,7 @@ function setBackground() {
   ).style = `background-image:url("assets/backgrounds/${bg}");background-size:cover;background-attachment: fixed;`;
   console.log("Using bg " + bg);
 }
-setBackground();
+setBackground();*/
 
 function shuffle(array) {
   const newArray = [...array];
@@ -79,14 +86,14 @@ function shuffle(array) {
   return newArray;
 }
 
-// when checkbox 
-document.getElementById("nolag").addEventListener('change', (e) => {
-    pauseResume(e.target.checked)
-    document.querySelector(".lag-text").innerHTML = e.target.checked ? "Lag disabled" : "Lag enabled"
-})
-document.getElementById("reload").addEventListener('click', () => {
-    setBackground()
-})
+// when checkbox
+document.getElementById("nolag").addEventListener("change", (e) => {
+  pauseResumeMorph(e.target.checked);
+  pauseResumeBg(e.target.checked);
+  document.querySelector(".lag-text").innerHTML = e.target.checked
+    ? "Lag disabled"
+    : "Lag enabled";
+});
 
 document.querySelectorAll("img").forEach((img) => {
   let parent = img.parentElement;
@@ -97,7 +104,7 @@ document.querySelectorAll("img").forEach((img) => {
 });
 homeNav.addEventListener("click", () => {
   if (act === "h") return;
-  updateTexts(hn)
+  updateTexts(hn);
   document.querySelectorAll(".home *").forEach((e) => {
     e.style.display = "";
     e.style.opacity = "0";
@@ -134,7 +141,7 @@ homeNav.addEventListener("click", () => {
 });
 projectsNav.addEventListener("click", () => {
   if (act === "p") return;
-  updateTexts(pn)
+  updateTexts(pn);
   dnc = true;
   document.querySelectorAll(".projects *").forEach((e) => {
     e.style.display = "";
@@ -172,7 +179,7 @@ projectsNav.addEventListener("click", () => {
 let els = "";
 techStackNav.addEventListener("click", () => {
   if (act === "ts") return;
-  updateTexts(tsn)
+  updateTexts(tsn);
   dnc = true;
   document.querySelectorAll(".techstack img").forEach((e) => {
     e.style.display = "";
@@ -213,7 +220,7 @@ techStackNav.addEventListener("click", () => {
 });
 socialNav.addEventListener("click", () => {
   if (act === "s") return;
-  updateTexts(sn)
+  updateTexts(sn);
   let oldOpacitys = [];
   document.querySelectorAll(".social *").forEach((e) => {
     e.style.display = "";
