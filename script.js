@@ -25,13 +25,13 @@ Array.prototype.random = function () {
 
 let hn = [
   "STEEVE<br>BLLOX",
+  "STTEVE<br>BLOOX",
   "STEVEE<br>BLLOX",
-  "STEVEE<br>BLOOX",
-  "STEEVE<br>BLOOX",
-  "STEEVE<br>BLLOX",
+  "STTEVE<br>BLOOX",
+  "STEEVE<br>BBLOX",
   "STEVEE<br>BLLOX",
   "STEEVE<br>BBLOX",
-  "STEVEE<br>BBLOX",
+  "STTEVE<br>BLOOX",
 ];
 let pn = [
   "MY<br>PROOJECTS",
@@ -42,10 +42,10 @@ let pn = [
 ];
 let tsn = [
   "TEECH<br>STACKK",
-  "TECHH<br>STACKK",
-  "TECH<br>STACK",
-  "TEECH<br>STACK",
-  "TECH<br>STACKK",
+  "TECHH<br>STTACK",
+  "TTECH<br>STAACK",
+  "TEECH<br>STACKK",
+  "TECHH<br>STAACK",
 ];
 let sn = [
   "MY<br>SOOCIALS",
@@ -86,13 +86,22 @@ function shuffle(array) {
   return newArray;
 }
 
+const localLag = localStorage.getItem("lag") === "true";
+document.getElementById("nolag").checked = localLag;
+disableLag(localLag);
+
+function disableLag(d) {
+  pauseResumeMorph(d);
+  pauseResumeBg(d);
+}
+
 // when checkbox
 document.getElementById("nolag").addEventListener("change", (e) => {
-  pauseResumeMorph(e.target.checked);
-  pauseResumeBg(e.target.checked);
+  disableLag(e.target.checked);
   document.querySelector(".lag-text").innerHTML = e.target.checked
     ? "Lag disabled"
     : "Lag enabled";
+  localStorage.setItem("lag", e.target.checked ? "true" : "false");
 });
 
 document.querySelectorAll("img").forEach((img) => {
