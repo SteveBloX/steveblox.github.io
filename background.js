@@ -33,12 +33,10 @@ function pauseResumeBg(p) {
   console.log("Background", p ? "paused" : "resumed");
   paused = p;
   if (!paused) {
-    document.querySelector(".bouncing-blobs").style.display = "";
-    document.querySelector(".bouncing-blobs-glass").style.display = "";
+    document.querySelector(".bouncing-blobs-container").style.display = "";
     requestAnimationFrame(update);
   } else {
-    document.querySelector(".bouncing-blobs").style.display = "none";
-    document.querySelector(".bouncing-blobs-glass").style.display = "none";
+    document.querySelector(".bouncing-blobs-container").style.display = "none";
   }
 }
 
