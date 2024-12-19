@@ -1,1 +1,2 @@
-I'm planning to remake it in React
+# old project
+the code is very bad
